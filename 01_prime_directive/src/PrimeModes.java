@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 public class PrimeModes {
 
+    // Handle "full" mode: check all numbers from 1 to endNumber inclusive
     public static void handleFullMode(Scanner input) { // numbers from 1 to endNumber (full range)
         System.out.print("Enter end number: ");
         int endNumber = input.nextInt();
         input.nextLine();
+
         if (endNumber < 1){
             System.out.println("End number must be greater than 1!");
         }
+
         System.out.println("=====[SCAN LOG]=====");
         System.out.println("Analyzing numbers 1 - " + endNumber);
         int primeCount = 0;
@@ -28,6 +31,7 @@ public class PrimeModes {
         System.out.printf("Total primes: %d, composites: %d\n", primeCount, compositeCount);
     }
 
+    // Handle "odd" mode: check only odd numbers from 1 to endNumber inclusive
     public static void handleOddMode(Scanner input) { // numbers from 1 to endNumber (only odd numbers)
         System.out.print("Enter end number: ");
         int endNumber = input.nextInt();
@@ -53,6 +57,7 @@ public class PrimeModes {
         System.out.printf("Total primes: %d, composites: %d\n", primeCount, compositeCount);
     }
 
+    // Handle "custom" mode: check numbers between startNumber and endNumber inclusive
     public static void customRangeScan(Scanner input) {
         System.out.print("Enter start number: ");
         int startNumber = input.nextInt();
@@ -85,7 +90,9 @@ public class PrimeModes {
         System.out.printf("Total primes: %d, composites: %d\n", primeCount, compositeCount);
     }
 
-    public static boolean isPrime(int number){ // true if number is prime, false otherwise
+    // check if a number is prime
+    // true if number is prime, false otherwise
+    public static boolean isPrime(int number){
         if (number < 2) return false;
         int i = 2;
         while (i * i <= number){
