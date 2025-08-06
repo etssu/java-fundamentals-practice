@@ -38,5 +38,23 @@ public class DNAMethods {
         }
     }
 
+    public static void complementarySequence(Scanner input){
+        System.out.print("Enter the sequence: ");
+        String sequence = input.nextLine().toUpperCase();
+        int length = sequence.length();
 
+        StringBuilder sb = new StringBuilder(sequence.length());
+        for (int i = 0; i < length; i++) {
+            char c = sequence.charAt(i);
+            switch (c){
+                case 'A' :  sb.append("T"); break;
+                case 'C' : sb.append("G"); break;
+                case 'T' :  sb.append("A"); break;
+                case 'G' :  sb.append("C"); break;
+                default:
+                    System.out.println("Skipped invalid character: " + c);
+            }
+        }
+        System.out.println(sb.reverse().toString());
+    }
 }

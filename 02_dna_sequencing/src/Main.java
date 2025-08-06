@@ -20,6 +20,7 @@ public class Main {
                 case 3: //find genes
                     break;
                 case 4: // complementary
+                    DNAMethods.complementarySequence(scanner);
                     break;
                 case 5: // compare
                     break;
