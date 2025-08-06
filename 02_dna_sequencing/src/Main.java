@@ -5,14 +5,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true){
-            System.out.print("Enter the number of the mode you need:\n1. Clean the sequence.\n2. Count nucleotides.\n3. Find genes." +
-                    "\n4. Get complementary sequence.\n5. Compare sequences.\n6. Exit.");
+            System.out.print("Existing modes:\n1. Clean the sequence.\n2. Count nucleotides.\n3. Find genes." +
+                    "\n4. Get complementary sequence.\n5. Compare sequences.\n6. Exit.\nEnter the number of the mode you need: ");
             int mode = scanner.nextInt();
+            scanner.nextLine(); // delete the '\n'
+
             switch (mode){
                 case 1: // cleaning sequence
                     DNAMethods.cleanSequence(scanner);
                     break;
                 case 2: // count
+                    DNAMethods.countNucleotides(scanner);
                     break;
                 case 3: //find genes
                     break;
