@@ -38,6 +38,20 @@ public class DNAMethods {
         }
     }
 
+    public static void findGene(Scanner input){
+        System.out.print("Enter the sequence: ");
+        String sequence = input.nextLine().toUpperCase();
+
+        System.out.println("Enter needed gene: ");
+        String gene = input.nextLine().toUpperCase();
+
+        if (sequence.contains(gene)){
+            System.out.println("Sequence contains gene: " + gene);
+        } else {
+            System.out.println("Sequence does not contain gene: " + gene);
+        }
+    }
+
     public static void complementarySequence(Scanner input){
         System.out.print("Enter the sequence: ");
         String sequence = input.nextLine().toUpperCase();
