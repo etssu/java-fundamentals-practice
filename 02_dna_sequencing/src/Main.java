@@ -18,11 +18,13 @@ public class Main {
                     DNAMethods.countNucleotides(scanner);
                     break;
                 case 3: //find genes
+                    DNAMethods.findGene(scanner);
                     break;
                 case 4: // complementary
                     DNAMethods.complementarySequence(scanner);
                     break;
                 case 5: // compare
+                    DNAMethods.compareSequence(scanner);
                     break;
                 case 6: // exit
                     System.out.println("Thank you for using DNA Sequencing Tool!");
