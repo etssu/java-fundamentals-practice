@@ -6,7 +6,8 @@ This repository contains all my projects focused on developing my Java skills.
 
 * Project 1: "Prime Directive" - a simple Java console app to find prime numbers within a given range.
 * Project 2: "DNA Sequencing" - a console app for working with DNA sequences (finding genes, creating complementary sequences, etc.).
-
+* Project 3: "Language Families" - a simple Java console app that demonstrates method overriding with language-specific greetings.
+  
 ---
 
 ## Purpose & Skills practiced
