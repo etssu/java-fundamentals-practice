@@ -61,6 +61,7 @@ public class DNAMethods {
         int length = sequence.length();
         StringBuilder sb = new StringBuilder(sequence.length());
 
+        System.out.print("Complementary sequence: ");
         for (int i = 0; i < length; i++) {
             char c = sequence.charAt(i);
             switch (c){

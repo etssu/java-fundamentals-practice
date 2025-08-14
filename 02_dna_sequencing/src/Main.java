@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -32,7 +33,7 @@ public class Main {
                 default:
                     System.out.println("Invalid input. Try again.");
             }
-
+            System.out.println();
         }
     }
 }
