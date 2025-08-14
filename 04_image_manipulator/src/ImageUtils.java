@@ -3,16 +3,13 @@ import java.util.Scanner;
 public class ImageUtils {
     public static int[][] getImage(Scanner input) {
         // get image size
-        System.out.print("Enter image width: ");
-        int cols = input.nextInt();
-        System.out.print("Enter image height: ");
-        int rows = input.nextInt();
+        int cols = readInt(input, "Enter image width: ");
+        int rows = readInt(input, "Enter image height: ");
 
         int[][] image = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.printf("Enter pixel [%d, %d]: ", i+1, j+1);
-                image[i][j] = input.nextInt();
+                image[i][j] = readPixel(input, i, j);
             }
         }
         return image;
@@ -41,5 +38,39 @@ public class ImageUtils {
             }
             System.out.println();
         }
+    }
+
+    public static void rotateImage(int[][] image, Scanner input) {
+        System.out.print("Enter the rotation angle in degrees (90 / 180 / 270): ");
+        int degrees = input.nextInt();
+
+
+    }
+
+    public static int readInt(Scanner input, String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Enter a number next time.");
+                input.nextLine(); // clear invalid input
+            }
+        }
+    }
+
+    public static int readPixel(Scanner input, int row, int col) {
+        int value = 0;
+        while (true) {
+            value = readInt(input, String.format("Enter pixel [%d, %d]: ", row+1, col+1));
+            if (value < 0){
+                System.out.println("Number should be greater than zero.");
+            } else if (value > 255){
+                System.out.println("Number should be less than or equal to 255.");
+            } else {
+                break;
+            }
+        }
+        return value;
     }
 }

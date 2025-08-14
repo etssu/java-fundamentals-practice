@@ -5,7 +5,7 @@ public class InputHandler {
 
     public void ImageController() {
         while (true) {
-            System.out.print("Available modes:\n 1. Invert colors\n 2. Adjust Brightness\n 3. Rotate (90/180/270)\n " +
+            System.out.print("Available modes:\n 1. Invert colors\n 2. Adjust Brightness\n 3. Rotate\n " +
                     "4. Flip (vertical / horizontal)\n 5. Blur\n 6. Display.\n 7. Exit\n");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
