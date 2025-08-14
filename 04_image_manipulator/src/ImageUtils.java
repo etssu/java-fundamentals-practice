@@ -23,10 +23,9 @@ public class ImageUtils {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 image[i][j] = 255 - image[i][j]; // find inverted color
-                System.out.printf("%3d ", image[i][j]);
             }
-            System.out.println();
         }
+        printImage(image);
     }
 
     public static void adjustBrightness(int[][] image, int difference) {
@@ -35,10 +34,9 @@ public class ImageUtils {
                 image[i][j] += difference; // add difference to every pixel
                 if (image[i][j] < 0) image[i][j] = 0;
                 if (image[i][j] > 255) image[i][j] = 255;
-                System.out.printf("%3d ", image[i][j]);
             }
-            System.out.println();
         }
+        printImage(image);
     }
 
     public static void rotateImage(int[][] image, Scanner input) {
@@ -60,13 +58,50 @@ public class ImageUtils {
             result = rotatedImage;
         }
 
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[0].length; j++) {
-                System.out.printf("%3d ", result[i][j]);
-            }
-            System.out.println();
+        printImage(result);
+    }
+
+    public static void flipImage(int[][] image, Scanner input) {
+        int rows = image.length;
+        int cols = image[0].length;
+
+        int[][] flippedImage = new int[rows][cols];
+        // create a deep copy of the image
+        for (int i = 0; i < rows; i++) {
+            System.arraycopy(image[i], 0, flippedImage[i], 0, cols);
         }
 
+        while (true) {
+            input.nextLine(); // clear input
+            System.out.print("Enter mode(vertical/horizontal): ");
+            String choice = input.nextLine();
+
+            // flip image vertically
+            if (choice.equalsIgnoreCase("vertical")) {
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < cols / 2; j++) {
+                        int temp = flippedImage[i][j];
+                        flippedImage[i][j] = flippedImage[i][cols - 1 - j];
+                        flippedImage[i][cols - 1 - j] = temp;
+                    }
+                }
+                break;
+            }
+            // flip image horizontally
+            else if (choice.equalsIgnoreCase("horizontal")) {
+                for (int i = 0; i < rows / 2; i++) {
+                    for (int j = 0; j < cols; j++) {
+                        int temp = flippedImage[i][j];
+                        flippedImage[i][j] = flippedImage[rows - 1 - i][j];
+                        flippedImage[rows - 1 - i][j] = temp;
+                    }
+                }
+                break;
+            } else {
+                System.out.println("Wrong choice. Try again.");
+            }
+        }
+        printImage(flippedImage);
     }
 
     private static int readInt(Scanner input, String prompt) {
@@ -94,5 +129,14 @@ public class ImageUtils {
             }
         }
         return value;
+    }
+
+    private static void printImage(int[][] image) {
+        for (int i = 0; i < image.length; i++) {
+            for (int j = 0; j < image[0].length; j++) {
+                System.out.printf("%3d ", image[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
