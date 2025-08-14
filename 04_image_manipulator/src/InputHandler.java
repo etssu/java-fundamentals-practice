@@ -23,6 +23,11 @@ public class InputHandler {
 
                     ImageUtils.adjustBrightness(image, difference);
                     break;
+                case 3:
+                    image = ImageUtils.getImage(sc);
+
+                    ImageUtils.rotateImage(image, sc);
+                    break;
                 case 7:
                     System.out.println("Thank you for using Image Manipulator.");
                     System.exit(0);

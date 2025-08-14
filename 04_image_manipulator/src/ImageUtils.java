@@ -6,6 +6,7 @@ public class ImageUtils {
         int cols = readInt(input, "Enter image width: ");
         int rows = readInt(input, "Enter image height: ");
 
+        // read image
         int[][] image = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -31,7 +32,7 @@ public class ImageUtils {
     public static void adjustBrightness(int[][] image, int difference) {
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[0].length; j++) {
-                image[i][j] += difference;
+                image[i][j] += difference; // add difference to every pixel
                 if (image[i][j] < 0) image[i][j] = 0;
                 if (image[i][j] > 255) image[i][j] = 255;
                 System.out.printf("%3d ", image[i][j]);
@@ -41,13 +42,34 @@ public class ImageUtils {
     }
 
     public static void rotateImage(int[][] image, Scanner input) {
-        System.out.print("Enter the rotation angle in degrees (90 / 180 / 270): ");
-        int degrees = input.nextInt();
+        int[][] result = image;
 
+        int degrees = readInt(input, "Enter the rotation angle in degrees (90 / 180 / 270): ");
+        int times = degrees / 90;
+
+        for (int k  = 0; k < times; k++) {
+            int rows = result.length;
+            int cols = result[0].length;
+            int[][] rotatedImage = new int[rows][cols];
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    //move image
+                    rotatedImage[j][rows - 1 - i] = result[i][j];
+                }
+            }
+            result = rotatedImage;
+        }
+
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length; j++) {
+                System.out.printf("%3d ", result[i][j]);
+            }
+            System.out.println();
+        }
 
     }
 
-    public static int readInt(Scanner input, String prompt) {
+    private static int readInt(Scanner input, String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
@@ -59,7 +81,7 @@ public class ImageUtils {
         }
     }
 
-    public static int readPixel(Scanner input, int row, int col) {
+    private static int readPixel(Scanner input, int row, int col) {
         int value = 0;
         while (true) {
             value = readInt(input, String.format("Enter pixel [%d, %d]: ", row+1, col+1));
