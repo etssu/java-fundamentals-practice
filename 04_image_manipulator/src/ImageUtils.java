@@ -104,6 +104,35 @@ public class ImageUtils {
         printImage(flippedImage);
     }
 
+    public static void blurImage(int[][] image){
+        int rows = image.length;
+        int cols = image[0].length;
+        int[][] blurredImage = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int sum = 0;
+                int count = 0;
+
+                // searching 3x3 blocks
+                for (int di = -1; di <= 1; di++) {
+                    for (int dj = -1; dj <= 1; dj++) {
+                        int ni = i + di;
+                        int nj = j + dj;
+
+                        // checking
+                        if (ni >= 0 && ni < rows && nj >= 0 && nj < cols) {
+                            sum += image[ni][nj];
+                            count++;
+                        }
+                    }
+                }
+                blurredImage[i][j] = sum / count; // average
+            }
+        }
+        printImage(blurredImage);
+    }
+
     private static int readInt(Scanner input, String prompt) {
         while (true) {
             try {
