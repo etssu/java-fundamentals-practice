@@ -33,6 +33,16 @@ public class InputHandler {
 
                     ImageUtils.flipImage(image, sc);
                     break;
+                case 5:
+                    image = ImageUtils.getImage(sc);
+
+                    ImageUtils.blurImage(image);
+                    break;
+                case 6:
+                    image = ImageUtils.getImage(sc);
+
+                    ImageUtils.displayImage(image);
+                    break;
                 case 7:
                     System.out.println("Thank you for using Image Manipulator.");
                     System.exit(0);

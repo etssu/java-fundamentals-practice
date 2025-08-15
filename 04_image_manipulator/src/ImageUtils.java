@@ -25,7 +25,7 @@ public class ImageUtils {
                 image[i][j] = 255 - image[i][j]; // find inverted color
             }
         }
-        printImage(image);
+        displayImage(image);
     }
 
     public static void adjustBrightness(int[][] image, int difference) {
@@ -36,7 +36,7 @@ public class ImageUtils {
                 if (image[i][j] > 255) image[i][j] = 255;
             }
         }
-        printImage(image);
+        displayImage(image);
     }
 
     public static void rotateImage(int[][] image, Scanner input) {
@@ -58,7 +58,7 @@ public class ImageUtils {
             result = rotatedImage;
         }
 
-        printImage(result);
+        displayImage(result);
     }
 
     public static void flipImage(int[][] image, Scanner input) {
@@ -101,7 +101,7 @@ public class ImageUtils {
                 System.out.println("Wrong choice. Try again.");
             }
         }
-        printImage(flippedImage);
+        displayImage(flippedImage);
     }
 
     public static void blurImage(int[][] image){
@@ -130,7 +130,16 @@ public class ImageUtils {
                 blurredImage[i][j] = sum / count; // average
             }
         }
-        printImage(blurredImage);
+        displayImage(blurredImage);
+    }
+
+    public static void displayImage(int[][] image) {
+        for (int[] row : image) {
+            for (int pixel : row) {
+                System.out.printf("%3d ", pixel);
+            }
+            System.out.println();
+        }
     }
 
     private static int readInt(Scanner input, String prompt) {
@@ -160,12 +169,4 @@ public class ImageUtils {
         return value;
     }
 
-    private static void printImage(int[][] image) {
-        for (int i = 0; i < image.length; i++) {
-            for (int j = 0; j < image[0].length; j++) {
-                System.out.printf("%3d ", image[i][j]);
-            }
-            System.out.println();
-        }
-    }
 }
