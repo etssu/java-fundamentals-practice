@@ -18,6 +18,7 @@ The main goal of this repository is to practice Java fundamentals, such as:
 * Control structures (loops, conditionals)
 * Object-oriented programming (classes, inheritance, interfaces)
 * Collections and generics
+* Object serialization (saving/loading objects to/from files)
 
 ---
 
