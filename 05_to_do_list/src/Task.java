@@ -1,13 +1,12 @@
 import java.io.Serializable;
 
 public class Task implements Serializable{
-    String name;
+    String title;
     String deadline;
     boolean done;
 
-    Task(String name,String deadline){
-        this.name = name;
-        this.deadline = deadline;
+    Task(String title){
+        this.title = title;
         done = false;
     }
 
