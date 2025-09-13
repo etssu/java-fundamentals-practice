@@ -8,6 +8,7 @@ This repository contains all my projects focused on developing my Java skills.
 * Project 2: "DNA Sequencing" - a console app for working with DNA sequences (finding genes, creating complementary sequences, etc.).
 * Project 3: "Language Families" - a simple Java console app that demonstrates method overriding with language-specific greetings.
 * Project 4: "Image Manipulator" - a simple Java console app to perform operations on images represented as two-dimensional matrices of numbers.
+* Project 5: "To Do List" - a simple Java console app to manage your own to-do lists using files (this project will be upgraded into a full-featured app later).
 
 ---
 
@@ -19,6 +20,7 @@ The main goal of this repository is to practice Java fundamentals, such as:
 * Object-oriented programming (classes, inheritance, interfaces)
 * Collections and generics
 * Object serialization (saving/loading objects to/from files)
+* File handling (creating, listing, and deleting files)
 
 ---
 
