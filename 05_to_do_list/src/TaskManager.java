@@ -8,7 +8,5 @@ public class TaskManager {
         tasks.add(task);
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
+    public List<Task> getTasks() { return tasks; }
 }
