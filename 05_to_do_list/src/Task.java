@@ -9,12 +9,12 @@ public class Task implements Serializable{
         done = false;
     }
 
-    public boolean isDone() {
+    public boolean isDone() { // to check whether the task is done
         return done;
     }
 
-    public void setDone(boolean done){
-        this.done = done;
+    public void setDone(){
+        this.done = true;
     }
 
     @Override
