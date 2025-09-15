@@ -64,6 +64,7 @@ public class AppController {
             System.out.println("1. Add a task\n2. Delete a task\n3. Mark as done\n4. Back to menu.");
             System.out.print("Enter your choice(a number): ");
             int choice = sc.nextInt();
+            sc.nextLine(); // to clear the input
 
             switch (choice) {
                 // add a task
@@ -77,8 +78,12 @@ public class AppController {
                     manager.saveTasks(fileName); // serialize tasks
 
                     // print out all tasks
-                    for (Task t : tasks){
-                        System.out.println(t);
+                    if (!tasks.isEmpty()) {
+                        for (Task t : tasks){
+                            System.out.println(t);
+                        }
+                    } else {
+                        System.out.println("No tasks.");
                     }
                     break;
 
@@ -116,7 +121,7 @@ public class AppController {
                     System.out.println(); // empty line for readability
                     return;
                 default:
-                    System.out.println("Invalid Choice. Try again.");
+                    System.out.println("Invalid Choice. Try again.\n");
             }
         }
     }

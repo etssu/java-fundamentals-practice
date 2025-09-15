@@ -28,11 +28,15 @@ public class ToDoService {
     public void openFile(String fileName){
         TaskManager tm = new TaskManager();
 
-        System.out.println("You opened the file: " + fileName + ".ser");
+        System.out.println("You opened the file: " + fileName + ".ser\n");
         List<Task> tasks = tm.loadTasks(fileName);
 
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.printf("%d. %s\n", i + 1, tasks.get(i));
+        if (!tasks.isEmpty()){
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.printf("%d. %s\n", i + 1, tasks.get(i));
+            }
+        } else {
+            System.out.println("Folder is empty.\n");
         }
     }
 
@@ -42,7 +46,7 @@ public class ToDoService {
         File file = new File(folderName + fileName + ".ser");
         try {
             if (file.createNewFile()) {
-                System.out.println("File created");
+                System.out.println("File created successfully.\n");
             } else {
                 System.out.println("File already exists");
             }
