@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 public class Task implements Serializable{
-    String title;;
+    String title;
     boolean done;
 
     Task(String title){

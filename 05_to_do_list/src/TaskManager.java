@@ -7,7 +7,7 @@ import java.util.List;
 
 @SuppressWarnings("unchecked")
 public class TaskManager {
-    public List<Task> tasks = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task){
         tasks.add(task);
@@ -23,18 +23,27 @@ public class TaskManager {
     }
 
     public void getDone(int index){
-        if (index > 0  && index < tasks.size()){
-            Task task = tasks.get(index-1);
+        if (index < 1 || index > tasks.size()){
+            System.out.println("Invalid task number!");
+            return;
+        }
+
+        Task task = tasks.get(index - 1);
+
+        if (task.isDone()){
+            System.out.println("Task has been done.");
+        } else {
             task.setDone();
             System.out.println("Done successfully.");
-        } else {
-            System.out.println("Invalid task number!");
         }
     }
 
-    public List<Task> getTasks() { return new ArrayList<>(tasks); }
+    public List<Task> getTasks(String fileName) {
+        return loadTasks(fileName);
+    }
 
-    public void saveTasks(List<Task> tasks, String title){
+    // Serializing
+    public void saveTasks(String title){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/" + title + ".ser"))){
             oos.writeObject(tasks);
             System.out.println("Tasks saved to file!");
@@ -43,12 +52,13 @@ public class TaskManager {
         }
     }
 
-
-    public void loadTasks(List<Task> tasks, String title){
+    // De-serializing
+    public List<Task> loadTasks(String title){
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/" + title + ".ser"))){
-            tasks = (List<Task>) ois.readObject();
+            return (List<Task>) ois.readObject();
         } catch (Exception e){
             System.out.println(e.getMessage());
+            return null;
         }
     }
 }

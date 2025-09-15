@@ -9,34 +9,30 @@ public class ToDoService {
             File folder = new File("data");
             String[] listOfFiles = folder.list();
 
-            // display the names of the files
-            for (String fileName : listOfFiles) {
-                System.out.println(fileName);
+            if (listOfFiles == null || listOfFiles.length == 0) {
+                System.out.println("There are no files in the folder.");
+            } else {
+                // display all files
+                System.out.println("Files in the folder:");
+                for (int i  = 0; i < listOfFiles.length; i++) {
+                    System.out.printf("%d. %s\n", i+1, listOfFiles[i]);
+                }
+                System.out.println();   // empty line for readability
             }
+
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void openFile(String fileName){
-        String folderName = "data/";
-        String filePath = folderName + fileName + ".ser"; // get file path
+        TaskManager tm = new TaskManager();
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
-            List<Task> tasks = (List<Task>) ois.readObject();
+        System.out.println("You opened the file: " + fileName + ".ser");
+        List<Task> tasks = tm.loadTasks(fileName);
 
-            System.out.println("You opened the file " + fileName + ".ser:");
-
-            if (tasks.isEmpty()) {
-                System.out.println("The file is empty.");
-            } else {
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.printf("%d. %s\n", i + 1, tasks.get(i));
-                }
-            }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.printf("%d. %s\n", i + 1, tasks.get(i));
         }
     }
 
