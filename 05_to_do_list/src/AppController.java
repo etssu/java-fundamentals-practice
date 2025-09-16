@@ -76,14 +76,28 @@ public class AppController {
 
         while (true) {
             System.out.println("What do you want to do next?");
-            System.out.println("1. Add a task\n2. Delete a task\n3. Mark as done\n4. Back to menu.");
-            System.out.print("Enter your choice(a number): ");
+            System.out.println("1. Display all tasks.\n2. Add a task.\n3. Mark as done.\n4. Delete a task.\n5. Back to menu.");
+            System.out.print("Enter your choice (a number): ");
             int choice = sc.nextInt();
             sc.nextLine(); // to clear the input
 
             switch (choice) {
-                // add a task
+                // display tasks
                 case 1:
+                    tasks = manager.getTasks(fileName);
+                    if (tasks.isEmpty()) {
+                        System.out.println("No tasks.\n");
+                        break;
+                    }
+
+                    System.out.println("Tasks in current directory:");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.printf("%d. %s\n", i + 1, tasks.get(i));
+                    }
+                    break;
+
+                // add a task
+                case 2:
                     System.out.print("Enter task name: ");
                     String taskName = sc.nextLine(); // get title
                     Task task = new Task(taskName);
@@ -93,28 +107,16 @@ public class AppController {
                     tasks = manager.getTasks(fileName);
 
                     // print out all tasks
-                    if (!tasks.isEmpty()) {
-                        for (int i = 0; i < tasks.size(); i++) {
-                            System.out.printf("%d. %s\n", i + 1, tasks.get(i));
-                        }
-                    } else {
-                        System.out.println("No tasks.");
+                    if (tasks.isEmpty()) {
+                        System.out.println("No tasks.\n");
+                        break;
                     }
-                    break;
 
-                // delete a task
-                case 2:
-                    System.out.print("Enter a number of the task you want to delete: ");
-                    int taskNumber = sc.nextInt();
-
-                    manager.removeTask(taskNumber);
-                    manager.saveTasks(fileName); // update
-
-                    // print updated tasks
-                    tasks = manager.getTasks(fileName);
+                    System.out.println("Tasks in current directory:");
                     for (int i = 0; i < tasks.size(); i++) {
                         System.out.printf("%d. %s\n", i + 1, tasks.get(i));
                     }
+                    System.out.println(); // spacing for readability
                     break;
 
                 // mark as done
@@ -127,14 +129,40 @@ public class AppController {
 
                     // print updated tasks
                     tasks = manager.getTasks(fileName);
-                    for (Task t : tasks){
-                        System.out.println(t);
+                    if (tasks == null) {
+                        System.out.println("No tasks.\n");
+                        break;
                     }
+
+                    System.out.println("Tasks in current directory:");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.printf("%d. %s\n", i + 1, tasks.get(i));
+                    }
+                    System.out.println(); // spacing for readability
                     break;
 
-                case 4: // back to menu
-                    System.out.println(); // empty line for readability
+                // delete a task
+                case 4:
+                    System.out.print("Enter a number of the task you want to delete: ");
+                    int taskNumber = sc.nextInt();
+
+                    manager.removeTask(taskNumber);
+                    manager.saveTasks(fileName); // update
+
+                    // print updated tasks
+                    tasks = manager.getTasks(fileName);
+                    System.out.println("Tasks in current directory:");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.printf("%d. %s\n", i + 1, tasks.get(i));
+                    }
+                    System.out.println();
+                    break;
+
+                // back to menu
+                case 5:
+                    System.out.println(); // spacing for readability
                     return;
+
                 default:
                     System.out.println("Invalid Choice. Try again.\n");
             }

@@ -46,7 +46,6 @@ public class TaskManager {
     public void saveTasks(String title){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/" + title + ".ser"))){
             oos.writeObject(tasks);
-            System.out.println("Tasks saved to file!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
