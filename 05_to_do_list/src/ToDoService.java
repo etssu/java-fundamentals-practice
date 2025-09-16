@@ -28,11 +28,6 @@ public class ToDoService {
     public void openFile(String fileName){
         TaskManager tm = new TaskManager();
 
-        if (!fileExists(fileName)) {
-            System.out.println("File does not exist.");
-            return;
-        }
-
         System.out.println("You opened the file: " + fileName + ".ser\n");
         List<Task> tasks = tm.loadTasks(fileName);
 
@@ -63,11 +58,6 @@ public class ToDoService {
     public void deleteFile(String fileName){
         String folderName = "data/";
         File file = new File(folderName + fileName + ".ser");
-
-        if (!file.exists()) {
-            System.out.println("File does not exist.");
-            return;
-        }
 
         if (file.delete()) {
             System.out.println("Deleted the file: " + file.getName());

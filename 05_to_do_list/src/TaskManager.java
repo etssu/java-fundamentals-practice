@@ -14,11 +14,9 @@ public class TaskManager {
     }
 
     public void removeTask(int index){
-        System.out.println("tasks size: " + tasks.size()); // fixing
-
-        if (index > 0 && index < tasks.size()){
+        if (index > 0 && index <= tasks.size()){
             tasks.remove(index - 1);
-            System.out.println("Task removed successfully.");
+            System.out.println("Task removed successfully.\n");
         } else {
             System.out.println("Invalid task number!\n");
         }

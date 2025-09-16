@@ -24,6 +24,11 @@ public class AppController {
                     System.out.print("Enter file name: ");
                     fileName = sc.nextLine(); // get file name
 
+                    if (!service.fileExists(fileName)) {
+                        System.out.println("File does not exist. Try again.\n");
+                        break;
+                    }
+
                     service.openFile(fileName);
                     taskMenu(sc, fileName);
                     break;
@@ -32,6 +37,11 @@ public class AppController {
                     System.out.println("\nNote: The program will add the .ser extension automatically.");
                     System.out.print("Enter file name: ");
                     fileName = sc.nextLine(); // get file name
+
+                    if (service.fileExists(fileName)) {
+                        System.out.println("File already exists.\n");
+                        break;
+                    }
 
                     service.createFile(fileName);
                     taskMenu(sc, fileName); // print all tasks
@@ -42,8 +52,13 @@ public class AppController {
                     System.out.print("Enter file name: ");
                     fileName = sc.nextLine();
 
+                    if (!service.fileExists(fileName)) {
+                        System.out.println("File does not exist. Try again.\n");
+                        break;
+                    }
+
                     service.deleteFile(fileName);
-                    service.getAllFiles(); // print all the tasks after update
+                    service.getAllFiles(); // print all the files after update
                     break;
 
                 case 5: // quit
@@ -74,13 +89,13 @@ public class AppController {
                     Task task = new Task(taskName);
                     manager.addTask(task);
 
-                    tasks = manager.getTasks(fileName);
                     manager.saveTasks(fileName); // serialize tasks
+                    tasks = manager.getTasks(fileName);
 
                     // print out all tasks
                     if (!tasks.isEmpty()) {
-                        for (Task t : tasks){
-                            System.out.println(t);
+                        for (int i = 0; i < tasks.size(); i++) {
+                            System.out.printf("%d. %s\n", i + 1, tasks.get(i));
                         }
                     } else {
                         System.out.println("No tasks.");
@@ -97,8 +112,8 @@ public class AppController {
 
                     // print updated tasks
                     tasks = manager.getTasks(fileName);
-                    for (Task t : tasks){
-                        System.out.println(t);
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.printf("%d. %s\n", i + 1, tasks.get(i));
                     }
                     break;
 
