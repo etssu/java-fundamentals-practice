@@ -10,7 +10,7 @@ public class ToDoService {
             String[] listOfFiles = folder.list();
 
             if (listOfFiles == null || listOfFiles.length == 0) {
-                System.out.println("There are no files in the folder.");
+                System.out.println("There are no files in the folder.\n");
             } else {
                 // display all files
                 System.out.println("Files in the folder:");
@@ -50,6 +50,7 @@ public class ToDoService {
 
         if (file.delete()) {
             System.out.println("Deleted the file: " + file.getName());
+            System.out.println();
         } else {
             System.out.println("Failed to delete the file.");
         }

@@ -5,6 +5,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         AppController ac = new AppController(sc);
-
+        //real time sync
     }
 }

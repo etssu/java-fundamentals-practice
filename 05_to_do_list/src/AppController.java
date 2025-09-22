@@ -85,7 +85,7 @@ public class AppController {
                 // display tasks
                 case 1:
                     tasks = manager.getTasks(fileName);
-                    if (tasks.isEmpty()) {
+                    if (tasks == null) {
                         System.out.println("No tasks.\n");
                         break;
                     }
