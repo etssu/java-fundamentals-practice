@@ -1,11 +1,25 @@
 # Language Families
 
-The project implements a model of language families using object-oriented programming.
-Classes and inheritance reflect the relationships between language families, subfamilies, and individual languages.
+This project is a simple model of language families implemented using object-oriented programming concepts.
+It demonstrates how inheritance and polymorphism can represent the hierarchical relationships between:
 
-It was created only for practicing Inheritance and Polymorphism and will not be used in the future.
+* Language families (e.g. Indo-European)
+* Subfamilies (e.g. Germanic)
+* Individual languages (e.g. English, Swedish)
+
+The project was created only for practicing OOP principles and is not intended for further development.
 
 ## Skills practiced
+
 * Object Oriented Programming (OOP)
 * Inheritance
 * Polymorphism
+
+## How to Run
+
+This is a console-based demo project.
+Simply run the main file to see example output.
+
+## Purpose
+
+The main goal is to strengthen understanding of OOP inheritance and polymorphism by applying them to a clear real-world hierarchy.
