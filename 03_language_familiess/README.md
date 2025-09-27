@@ -18,8 +18,8 @@ The project was created only for practicing OOP principles and is not intended f
 ## How to Run
 
 This is a console-based demo project.
-Simply run the main file to see example output.
+Simply run the `main` file to see example output.
 
 ## Purpose
 
-The main goal is to strengthen understanding of OOP inheritance and polymorphism by applying them to a clear real-world hierarchy.
+The main goal is to strengthen understanding of **OOP inheritance** and **polymorphism** by applying them to a clear real-world hierarchy.
